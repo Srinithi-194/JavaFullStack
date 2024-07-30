@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        .button{
+            display: flex;
+            margin-left: 30px;
+        }
+        button{
+            width: 100px;
+            height: 50px;
+            border-radius: 10px;
+            margin-left: 10px;
+            background-color:aquamarine;
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        input{
+            margin-left: 40px;
+            width: 420px;
+            height: 40px;
+            border-radius: 10px;
+            margin-top: 10px;
+            color: black;
+            background-color:cornsilk;
+            font-size:larger;
+            font-weight: bold;
+        }
+        .main{
+            border: 5px solid gray;
+            width: 500px;
+            height: 410px;
+            margin-left: 550px;
+            margin-top: 20vh;
+            border-radius: 30px;
+        }
+        body{
+            background-image: url(https://media.istockphoto.com/id/626056624/vector/mathematics-background.jpg?s=612x612&w=0&k=20&c=iSbq5qu3ecQt7-Sfx7IkpTSDFlayNyrUR4YUyED8keE=);
+        }
+        ::placeholder{
+            font-size:25px;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+    <div id="large">
+        <input id="display" placeholder="0" >
+    </div>
+    <br>
+    <div class="button">
+        <button onclick="clearDisplay('')">C</button>
+        <button onclick="appendToDisplay('%')">%</button>
+        <button onclick="deleteCharacter('')">Del</button>
+        <button onclick="appendToDisplay('/')">/</button>
+    </div>
+    <br>
+    <div class="button">
+        <button onclick="appendToDisplay('7')">7</button>
+        <button onclick="appendToDisplay('8')">8</button>
+        <button onclick="appendToDisplay('9')">9</button>
+        <button onclick="appendToDisplay('*')">*</button>
+    </div>
+    <br>
+    <div class="button">
+        <button onclick="appendToDisplay('4')">4</button>
+        <button onclick="appendToDisplay('5')">5</button>
+        <button onclick="appendToDisplay('6')">6</button>
+        <button onclick="appendToDisplay('-')">-</button>
+    </div>
+    <br>
+    <div class="button">
+        <button onclick="appendToDisplay('3')">3</button>
+        <button onclick="appendToDisplay('2')">2</button>
+        <button onclick="appendToDisplay('1')">1</button>
+        <button onclick="appendToDisplay('+')">+</button>
+    </div>
+    <br>
+    <div class="button">
+        <button onclick="appendToDisplay('00')">00</button>
+        <button onclick="appendToDisplay('0')">0</button>
+        <button onclick="appendToDisplay('.')">.</button>
+        <button onclick="calculate('')">=</button>
+    </div>
+</div>
+</body>
+<script src="JavaScript.js"></script>
+</html>

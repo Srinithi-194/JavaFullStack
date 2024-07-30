@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>String</title>
+    <script>
+    function string(){
+        let str=document.getElementById("string").value;
+        result.innerHTML += "Length: " + str.length + "<br>";
+        result.innerHTML += "Character: " + str.charAt(2) + "<br>";
+        result.innerHTML += "Slice: " + str.slice(2,4) + "<br>";
+        result.innerHTML += "SubString: " + str.substring(3,5) + "<br>";
+        result.innerHTML += "Substr: " + str.substr(2,6) + "<br>";
+        result.innerHTML += "UpperCase: " + str.toUpperCase() + "<br>";
+        result.innerHTML += "LowerCase: " + str.toLowerCase() + "<br>";
+        result.innerHTML += "Concatenation: " + str.concat(str) + "<br>";
+        result.innerHTML += "Trim: " + str.trim() + "<br>";
+        result.innerHTML += "StartTrim: " + str.trimStart() + "<br>";
+        result.innerHTML += "EndTrim: " + str.trimEnd() + "<br>";
+        result.innerHTML += "Repeat: " + str.repeat(3) + "<br>";
+        result.innerHTML += "Replace: " + str.replace("s","sh") + "<br>";
+        result.innerHTML += "ReplaceAll: " + str.replaceAll("i","ii") + "<br>";
+        result.innerHTML += "Split: " + str.split(" ") + "<br>";
+
+    }
+</script>
+</head>
+<body>
+    Enter String<input type="text" id="string">
+    <br><br>
+    <button onclick="string()">Operations</button>
+    <br><br>
+    <div id="result">
+        
+    </div>
+</body>
+</html>

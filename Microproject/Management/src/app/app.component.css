@@ -1,0 +1,36 @@
+label{
+    font-size: large;
+    color: darkcyan ;
+}
+input{
+    
+}
+.container{
+    border: 2px solid whitesmoke;
+    background-color: whitesmoke;
+    margin-top: 20px;
+    padding: 20px;
+    box-shadow: 2px 2px 2px 3px gray;
+}
+.main{
+    margin-top: 40px;
+}
+h3{
+    margin-left: 550px;
+    color: darkcyan;
+}
+button{
+    background-color: darkcyan;
+    color: black;
+    border: 2px solid darkcyan;
+    border-radius: 2px;
+    padding: 10px;
+    font-size: larger;
+    font-weight: bold;
+    width: 170px;
+}
+.button{
+    margin-left: 550px;
+    padding: 15px;
+
+}
