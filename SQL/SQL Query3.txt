@@ -1,0 +1,181 @@
+SQL> insert into tbl_student values (01,'Vish',22,'Vish@gmail.com','Chennai');
+
+1 row created.
+
+SQL> insert into tbl_student (regno,studname,sudage,studemail) values (02,'Sri',21,'sri@gmail.com');
+insert into tbl_student (regno,studname,sudage,studemail) values (02,'Sri',21,'sri@gmail.com')
+                                        *
+ERROR at line 1:
+ORA-00904: "SUDAGE": invalid identifier
+
+
+SQL> insert into tbl_student (regno,studname,studage,studemail) values (02,'Sri',21,'sri@gmail.com');
+
+1 row created.
+
+SQL> select *from tbl_student;
+
+     REGNO STUDNAME                STUDAGE STUDEMAIL
+---------- -------------------- ---------- ------------------------------
+STUDLOCATION
+------------------------------
+         1 Vish                         22 Vish@gmail.com
+Chennai
+
+         2 Sri                          21 sri@gmail.com
+Erode
+
+
+SQL> select *from tbl_emp;
+
+     EMPID EMPNAME     EMPSALARY      DEPNO
+---------- ---------- ---------- ----------
+       101 Sri             12000         10
+       102 Vish            13000         10
+       103 Selva           11000         20
+       104 Ramya           10000         20
+       105 Sam              9000         30
+       106                  8000         30
+
+6 rows selected.
+
+SQL> create table department(dno number(5) primary key,dname varchar2(20));
+
+Table created.
+
+SQL> create table employee(empid number(5) primary key,empname varchar2(20),empsalary number(5),dno number(5),foreign key(dno) refrences department(dno));
+create table employee(empid number(5) primary key,empname varchar2(20),empsalary number(5),dno number(5),foreign key(dno) refrences department(dno))
+                                                                                                                          *
+ERROR at line 1:
+ORA-00905: missing keyword
+
+
+SQL> create table employee(empid number(5) primary key,empname varchar2(20),empsalary number(5),dno number(5),foreign key(dno) references department(dno));
+
+Table created.
+
+SQL> desc employee;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ EMPID                                     NOT NULL NUMBER(5)
+ EMPNAME                                            VARCHAR2(20)
+ EMPSALARY                                          NUMBER(5)
+ DNO                                                NUMBER(5)
+
+SQL> insert into department values (10,'CSE');
+
+1 row created.
+
+SQL> insert into employee values (101,20000,10);
+insert into employee values (101,20000,10)
+            *
+ERROR at line 1:
+ORA-00947: not enough values
+
+
+SQL> insert into employee values (101,'Vish',20000,10);
+
+1 row created.
+
+SQL> insert into employee values (102,'Sri',19000,10);
+
+1 row created.
+
+SQL> select *from employee;
+
+     EMPID EMPNAME               EMPSALARY        DNO
+---------- -------------------- ---------- ----------
+       101 Vish                      20000         10
+       102 Sri                       19000         10
+
+SQL> select *from department;
+
+       DNO DNAME
+---------- --------------------
+        10 CSE
+
+SQL> insert into department values(20,'EEE');
+
+1 row created.
+
+SQL> insert into employee values (103,'Selva',19000,20);
+
+1 row created.
+
+SQL> select *from department;
+
+       DNO DNAME
+---------- --------------------
+        10 CSE
+        20 EEE
+
+SQL> select *from employee;
+
+     EMPID EMPNAME               EMPSALARY        DNO
+---------- -------------------- ---------- ----------
+       101 Vish                      20000         10
+       102 Sri                       19000         10
+       103 Selva                     19000         20
+
+SQL> create view myview as select * from tbl_emp where dno=10;
+create view myview as select * from tbl_emp where dno=10
+                                                  *
+ERROR at line 1:
+ORA-00904: "DNO": invalid identifier
+
+
+SQL> create view myview as select * from tbl_emp where deptno=10;
+create view myview as select * from tbl_emp where deptno=10
+                                                  *
+ERROR at line 1:
+ORA-00904: "DEPTNO": invalid identifier
+
+
+SQL> create view myview as select * from tbl_emp where depno=10;
+
+View created.
+
+SQL> select *from myview;
+
+     EMPID EMPNAME     EMPSALARY      DEPNO
+---------- ---------- ---------- ----------
+       101 Sri             12000         10
+       102 Vish            13000         10
+
+SQL> select *from tbl_emp;
+
+     EMPID EMPNAME     EMPSALARY      DEPNO
+---------- ---------- ---------- ----------
+       101 Sri             12000         10
+       102 Vish            13000         10
+       103 Selva           11000         20
+       104 Ramya           10000         20
+       105 Sam              9000         30
+       106                  8000         30
+
+6 rows selected.
+
+SQL> update myview set empsalary=20000 where empid=102;
+
+1 row updated.
+
+SQL> select *from tbl_emp;
+
+     EMPID EMPNAME     EMPSALARY      DEPNO
+---------- ---------- ---------- ----------
+       101 Sri             12000         10
+       102 Vish            20000         10
+       103 Selva           11000         20
+       104 Ramya           10000         20
+       105 Sam              9000         30
+       106                  8000         30
+
+6 rows selected.
+
+SQL> select depno,count(*) as "Total no of Employees" from tbl_emp group by depno;
+
+     DEPNO Total no of Employees
+---------- ---------------------
+        30                     2
+        20                     2
+        10                     2
