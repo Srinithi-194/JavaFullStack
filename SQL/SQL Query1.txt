@@ -90,6 +90,13 @@ C00001     SMITHA JAIN          Mumbai                   400054      15000
 C00003     PREM PUJARI          Mumbai                   400057       5000
 C00006     ROOPA                Mumbai                   400050          0
 
+4.
+SQL> select Client_Master.name,Client_Master.city from Client_Master join Sale_Order on  Client_Master.Client_No=Sale_Order.client_no where Sale_Order.order_no in('O19003','O19002');
+
+NAME                 CITY
+-------------------- --------------------
+SMITHA JAIN          Mumbai
+VANDANA RAO          Chennai
 
 5.
 SQL> SELECT CONCAT(CONCAT(name,' live in '),city) AS result FROM Client_Master;
@@ -104,3 +111,9 @@ RAVI SHANKAR live in Delhi
 ROOPA live in Mumbai
 
 6 rows selected.
+
+6.
+SQL> select Client_Master.client_no,Client_Master.name,Client_Master.city,Client_Master.pincode from Client_Master join Sale_Order on  Client_Master.Client_No=Sale_Order.client_no where order_status in ('In process');
+CLIENT_NO  NAME                 CITY                    PINCODE
+---------- -------------------- -------------------- ----------
+C00001     SMITHA JAIN          Mumbai                   400054
